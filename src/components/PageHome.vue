@@ -11,23 +11,19 @@
 
 <style></style>
 
-<script>
+<script setup>
 import sourceDate from '@/data.json'
-export default {
-    data() {
-        return {
-            threads: sourceDate.threads,
-            posts: sourceDate.posts,
-            users: sourceDate.users
-        }
-    },
-    methods: {
-        postById(postId) {
-            return this.posts.find(p => p.id === postId)
-        },
-        userById(userId) {
-            return this.users.find(u => u.id === userId)
-        }
-    }
+import { ref } from 'vue'
+
+const threads = ref(sourceDate.threads)
+const posts = ref(sourceDate.posts)
+const users = ref(sourceDate.users)
+
+function postById(postId) {
+    return posts.value.find(p => p.id === postId)
+}
+
+function userById(userId) {
+    return users.value.find(u => u.id === userId)
 }
 </script>
